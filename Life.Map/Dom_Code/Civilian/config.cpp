@@ -1,0 +1,22 @@
+class Civilian {
+	file = "Dom_Code\Civilian";
+	class catchFish {};
+	class createID {};
+	class endDelivery {};
+	class initBombMenu {};
+	class initIDMenu {};
+	class knockedDown {};
+	class knockOut {};
+	class playBlackjack {};
+	class questionLocation {};
+	class repairTerrainObject {};
+	class robStore {};
+	class startDelivery {};
+	class startJailbreak {};
+	class startRaid {};
+	class switchJob {};
+	class taxiDistance {};
+	class updateGov {};
+	class ziptie {};
+	class ziptied {};
+};
