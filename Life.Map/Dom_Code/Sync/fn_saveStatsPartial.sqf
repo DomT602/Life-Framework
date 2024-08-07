@@ -16,12 +16,6 @@ switch _mode do {
 	case 1: {
 		//gear
 	};
-	case 2: {
-		_packet pushBack phone_settings;
-	};
-	case 3: {
-		_packet pushBack phone_contacts;
-	};
 };
 
 _packet remoteExecCall ["DB_fnc_saveStatsPartial",2];

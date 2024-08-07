@@ -18,7 +18,7 @@ if (client_seatbelt) then {
 	client_seatbelt = false;
 };
 
-if (phone_charging) then {phone_charging = false};
+if (DT_phoneCharging) then {DT_phoneCharging = false};
 ["seatbelt"] call DT_fnc_updateHUDPartial;
 
 if (typeOf client_carrying isEqualTo "Land_Sleeping_bag_blue_folded_F") then {

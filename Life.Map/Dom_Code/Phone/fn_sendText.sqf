@@ -24,7 +24,7 @@ if (_targetNumber isEqualTo "911") then {
 			_units pushBack _x
 		};
 	} forEach playableUnits;
-	[_message,_myNumber,date,true,profileName] remoteExecCall ["DT_fnc_recieveText",_units];
+	[_message,_myNumber,true,profileName] remoteExecCall ["DT_fnc_recieveText",_units];
 } else {
 	private _toText = objNull;
 	{
@@ -34,16 +34,16 @@ if (_targetNumber isEqualTo "911") then {
 		};
 	} forEach playableUnits;
 	if !(isNull _toText) then {
-		[_message,_myNumber,date,false] remoteExecCall ["DT_fnc_recieveText",_toText];
+		[_message,_myNumber,false] remoteExecCall ["DT_fnc_recieveText",_toText];
 	} else {
 		_message = "This number is not currently avaliable, try again later.";
 		[_targetNumber,_message] call DT_fnc_popupPhone;
 	};
-	private _index = phone_inbox findIf {_x select 0 isEqualTo _targetNumber};
+	private _index = DT_phoneMessages findIf {_x select 0 isEqualTo _targetNumber};
 	if (_index isEqualTo -1) then {
-		phone_inbox pushBack [_targetNumber,[[true,_message]]];
+		DT_phoneMessages pushBack [_targetNumber,[[true,_message]]];
 	} else {
-		(phone_inbox select _index) params ["_number","_messages"];
+		(DT_phoneMessages select _index) params ["","_messages"];
 		_messages pushBack [true,_message];
 	};
 };

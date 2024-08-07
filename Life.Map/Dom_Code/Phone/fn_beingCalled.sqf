@@ -23,12 +23,7 @@ if (_dispatch) then {
 	phone_incNumber = "Emergency";
 } else {
 	private _name = [_number] call DT_fnc_findContact;
-
-	_text = if (_name isEqualTo "") then {
-		format["You are being called by %1.",_number];
-	} else {
-		format["You are being called by %1 (%2).",_name,_number];
-	};
+	_text = format["You are being called by %1.",_name];
 };
 
 phone_handler = [
@@ -47,7 +42,7 @@ phone_handler = [
 		};
 		[_text,"blue"] call DT_fnc_notify;
 		_args set [0,(_count + 1)];
-		//[player,[(phone_settings select 1),50,1]] remoteExecCall ["say3D",-2];
+		//[player,[DT_phoneRingtone,50,1]] remoteExecCall ["say3D",-2];
 	},
 	3,
 	[0,_text]

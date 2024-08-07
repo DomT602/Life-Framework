@@ -6,36 +6,32 @@
 params [
 	["_message","",[""]],
 	["_incNumber","",[""]],
-	["_date",[],[[]]],
-	["_type",false,[false]],
+	["_emergency",false,[false]],
 	["_sender","",[""]]
 ];
 if (_message isEqualTo "" || {_incNumber isEqualTo ""}) exitWith {};
 
-_date params ["_year","_month","_day","_hour","_minute"];
-_message = if (_type) then {
+date params ["_year","_month","_day","_hour","_minute"];
+_message = if (_emergency) then {
 	format["911: %1-%2-%3 | %4:%5<br/>%6",_day,_month,_year,_hour,_minute,_message];
 } else {
 	format["%1-%2-%3 | %4:%5<br/>%6",_day,_month,_year,_hour,_minute,_message];
 };
 
-private _index = phone_inbox findIf {_x select 0 isEqualTo _incNumber};
+private _index = DT_phoneMessages findIf {_x select 0 isEqualTo _incNumber};
 if (_index isEqualTo -1) then {
-	phone_inbox pushBack [_incNumber,[[false,_message]]];
+	DT_phoneMessages pushBack [_incNumber,[[false,_message]]];
 } else {
-	(phone_inbox select _index) params ["","_messages"];
+	(DT_phoneMessages select _index) params ["","_messages"];
 	_messages pushBack [false,_message];
 };
 
 if (!([player] call TFAR_fnc_hasRadio) || (player getVariable ["phoneBattery",100]) isEqualTo 0) exitWith {};
-	
-private _index = phone_contacts findIf {_x select 0 isEqualTo _incNumber};
-if (_index != -1) then {
-	_incNumber = (phone_contacts select _index) select 1;
-};
-[_incNumber,_message] call DT_fnc_popupPhone;
 
-if (phone_settings select 1) then {
+private _name = [_number] call DT_fnc_findContact;
+[_name,_message] call DT_fnc_popupPhone;
+
+if (DT_phoneRingtone isNotEqualTo "") then {
 	[player,["buzz",50,1]] remoteExecCall ["say3D",-2];
 };
 

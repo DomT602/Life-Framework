@@ -4,9 +4,8 @@
 	Description: Initiliases the contacts menu
 */
 
-createDialog "DT_contacts";
+private _display = createDialog ["DT_contacts",true];
 [phone_appOpen] call DT_fnc_updatePhone;
-private _display = findDisplay 1036;
 private _controlGroup = _display displayCtrl 2300;
 (ctrlPosition _controlGroup) params ["_xPos","_yPos","_width","_length"];
 
@@ -23,4 +22,4 @@ private _pos = 0;
 	_control ctrlAddEventHandler ["mouseButtonDown",format["['load',%1] call DT_fnc_editContact",_x]];
 	_control ctrlSetBackgroundColor [0,0,0,0.3];
 	_pos = ((ctrlPosition _control) select 1) + ((ctrlPosition _control) select 3) + 0.01;
-} forEach phone_contacts;
+} forEach DT_phoneContacts;

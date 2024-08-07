@@ -25,12 +25,4 @@ switch _mode do {
 			case "civ": {[format["updateCivGear:%1:%2",_gear,_uid],1] call MySQL_fnc_DBasync};
 		};
 	};
-
-	case 2: {
-		[format["updatePhoneSettings:%1:%2",_data,_uid],1] call MySQL_fnc_DBasync;
-	};
-
-	case 3: {
-		[format["updatePhoneContacts:%1:%2",_data,_uid],1] call MySQL_fnc_DBasync;
-	};
 };

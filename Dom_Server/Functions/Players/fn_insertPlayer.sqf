@@ -17,7 +17,7 @@ for "_i" from 0 to 1 step 0 do {
 	if (_return isEqualTo []) exitWith {_number = _randomNumber};
 };
 
-[format["insertPlayer:%1:%2:%3:%4",_uid,name _unit,_number,["\Dom_UI\phone\backgrounds\background1.paa","",8]],1] call MySQL_fnc_DBasync;
+[format["insertPlayer:%1:%2:%3:%4",_uid,name _unit,_number],1] call MySQL_fnc_DBasync;
 [
 	{
 		params ["_unit","_clientID"];

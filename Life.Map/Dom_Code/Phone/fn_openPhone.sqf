@@ -10,8 +10,7 @@ if (dialog) exitWith {};
 if (phone_beingCalled) then {
 	createDialog "DT_incomingCall";
 	private _name = [phone_incNumber] call DT_fnc_findContact;
-	private _callingInfo = format["%1<br/>%2",_name,phone_incNumber];
-	((findDisplay 1032) displayCtrl 1102) ctrlSetStructuredText parseText _callingInfo;
+	((findDisplay 1032) displayCtrl 1102) ctrlSetStructuredText parseText _name;
 } else {
 	createDialog "DT_phoneMain";
 	if (!phone_inCall && !phone_callingPlayer) then {
@@ -20,7 +19,7 @@ if (phone_beingCalled) then {
 		ctrlShow [1606,false];
 	};
 };
-((findDisplay phone_appOpen) displayCtrl 1200) ctrlSetText (phone_settings select 0);
+((findDisplay phone_appOpen) displayCtrl 1200) ctrlSetText DT_phoneBackground;
 
 [
 	{

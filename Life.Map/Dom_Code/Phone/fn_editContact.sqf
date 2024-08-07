@@ -34,21 +34,21 @@ switch _action do {
 		if (_name isEqualTo "" || {count _name > 50}) exitWith {["Invalid name.","orange"] call DT_fnc_notify};
 
 		private _origNumber = uiNamespace getVariable ["origNumber",""];
-		private _index = phone_contacts findIf {_x select 0 isEqualTo _origNumber};
+		private _index = DT_phoneContacts findIf {_x select 0 isEqualTo _origNumber};
 		if (_index isEqualTo -1) then {
-			phone_contacts pushBack [_number,_name,_notes];
+			DT_phoneContacts pushBack [_number,_name,_notes];
 		} else {
-			phone_contacts set [_index,[_number,_name,_notes]];
+			DT_phoneContacts set [_index,[_number,_name,_notes]];
 		};
-		[3] call DT_fnc_saveStatsPartial;
+		profileNamespace setVariable ["DT_phoneContacts",DT_phoneContacts];
 		uiNamespace setVariable ["origNumber",_number];
 	};
 	case "delete": {
 		private _origNumber = uiNamespace getVariable ["origNumber",""];
-		private _index = phone_contacts findIf {_x select 0 isEqualTo _origNumber};
+		private _index = DT_phoneContacts findIf {_x select 0 isEqualTo _origNumber};
 		if (_index isEqualTo -1) exitWith {["Error.","red"] call DT_fnc_notify};
 		closeDialog 0;
-		phone_contacts deleteAt _index;
-		[3] call DT_fnc_saveStatsPartial;
+		DT_phoneContacts deleteAt _index;
+		profileNamespace setVariable ["DT_phoneContacts",DT_phoneContacts];
 	};
 };

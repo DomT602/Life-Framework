@@ -7,10 +7,12 @@ params [
 	["_number","",[""]]
 ];
 
-private _name = "";
-private _index = phone_contacts findIf {_x select 0 isEqualTo _number};
+private _index = DT_phoneContacts findIf {_x select 0 isEqualTo _number};
 
-if (_index != -1) then {
-	_name = (phone_contacts select _index) select 1;
+private _return = if (_index isNotEqualTo -1) then {
+	(DT_phoneContacts select _index) select 1;
+} else {
+	_number;
 };
-_name;
+
+_return;

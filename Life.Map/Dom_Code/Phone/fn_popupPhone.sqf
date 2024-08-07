@@ -16,7 +16,7 @@ private _fnc_showDetails = {
 	private _phone = uiNamespace getVariable ["DT_popupPhone",displayNull];
 	(_phone displayCtrl 1100) ctrlSetStructuredText parseText _brief;
 	(_phone displayCtrl 1101) ctrlSetStructuredText parseText _message;
-	(_phone displayCtrl 1200) ctrlSetText (phone_settings select 0);
+	(_phone displayCtrl 1200) ctrlSetText DT_phoneBackground;
 	[
 		{
 			656 cutText ["","PLAIN"];

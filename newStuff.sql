@@ -23,8 +23,6 @@ CREATE TABLE IF NOT EXISTS `players` (
 	`jailStats` text NOT NULL DEFAULT '[false,"",0,""]',
 	`position` varchar(64) NOT NULL DEFAULT '[]',
 	`phoneNumber` varchar(12) NOT NULL,
-	`phoneSettings` varchar(150) NOT NULL, /*[background_path,ringtone_sound,volume]*/
-	`phoneContacts` varchar(900) NOT NULL DEFAULT '[]', /*[[number,name,notes]]*/
 	`skills` varchar(100) NOT NULL DEFAULT '[0,0,0,0,0]',
 	PRIMARY KEY (`id`),
 	UNIQUE KEY `pid` (`pid`),

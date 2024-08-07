@@ -57,11 +57,7 @@ if !(isNull _toRing) then {
 		_text = "Calling 911!";
 	} else {
 		private _name = [_number] call DT_fnc_findContact;
-		if (_name isEqualTo "") then {
-			_text =  format["You are calling %1.",_number];
-		} else {
-			_text = format["You are calling %1 (%2).",_name,_number];
-		};
+		_text =  format["You are calling %1.",_name];
 	};
 
 	[_ownNumber,player,_dispatch] remoteExecCall ["DT_fnc_beingCalled",_toRing];

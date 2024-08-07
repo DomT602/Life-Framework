@@ -16,8 +16,6 @@ params [
 	["_stats",[],[[]]],
 	["_position",[],[[]]],
 	["_phoneNumber","",[""]],
-	["_phoneContacts",[],[[]]],
-	["_phoneSettings",[],[[]]],
 	["_skills",[],[[]]],
 	["_companyData",[],[[]]],
 	["_houses",[],[[]]],
@@ -50,10 +48,8 @@ player setVariable ["blood",_blood,true];
 player setVariable ["injuries",_injuries,true];
 
 player setVariable ["phoneNumber",_phoneNumber,true];
-phone_contacts = _phoneContacts;
-phone_settings = _phoneSettings;
 if ([player] call TFAR_fnc_hasRadio) then {
-	[call TFAR_fnc_ActiveSWRadio,(_phoneSettings select 2)] call TFAR_fnc_setSwVolume;
+	[call TFAR_fnc_ActiveSWRadio,DT_phoneVolume] call TFAR_fnc_setSwVolume;
 };
 
 if !(_companyData isEqualTo []) then {

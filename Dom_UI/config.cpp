@@ -5186,7 +5186,7 @@ class DT_settings
 	name="DT_settings";
 	movingEnable=0;
 	onLoad="[_this select 0] call DT_fnc_setupDialog; phone_appOpen = 1039";
-	onUnload="phone_appOpen = 1031; [{!isNull (findDisplay 1031)},{((findDisplay 1031) displayCtrl 1200) ctrlSetText (phone_settings select 0)}] call CBA_fnc_waitUntilAndExecute;";
+	onUnload="phone_appOpen = 1031; [{!isNull (findDisplay 1031)},{((findDisplay 1031) displayCtrl 1200) ctrlSetText DT_phoneBackground}] call CBA_fnc_waitUntilAndExecute;";
 	class controls
 	{
 		class RscPicture_1200: RscPicture

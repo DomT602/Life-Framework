@@ -15,8 +15,16 @@ client_earPlugs = false;
 client_clickQueue = [];
 client_clickHandler = -1;
 
-phone_inbox = [];
-phone_charging = false;
+(profileNamespace getVariable ["DT_phoneSettings",["\Dom_UI\phone\backgrounds\background1.paa","",8]]) params ["_background","_ringtone","_volume"];
+DT_phoneBackground = _background;
+DT_phoneRingtone = _ringtone;
+DT_phoneVolume = _volume;
+
+DT_phoneContacts = profileNamespace getVariable ["DT_phoneContacts",[]];
+DT_phoneMessages = [];
+
+DT_phoneCharging = false;
+
 phone_appOpen = -1;
 phone_callOwner = objNull;
 phone_beingCalled = false;

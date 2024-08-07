@@ -13,11 +13,7 @@ createDialog "DT_seeMessage";
 [phone_appOpen] call DT_fnc_updatePhone;
 private _display = findDisplay 1035;
 private _name = [_number] call DT_fnc_findContact;
-if (_name isEqualTo "") then {
-	(_display displayCtrl 1103) ctrlSetStructuredText parseText _number;
-} else {
-	(_display displayCtrl 1103) ctrlSetStructuredText parseText _name;
-};
+(_display displayCtrl 1103) ctrlSetStructuredText parseText _name;
 
 uiNamespace setVariable ["number",_number];
 private _controlGroup = _display displayCtrl 2300;
